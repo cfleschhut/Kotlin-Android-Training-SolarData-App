@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:icon="@drawable/icon_solar_power_24"
+        android:title="Today" />
+
+    <item
+        android:icon="@drawable/icon_calendar_month_24"
+        android:title="History" />
+
+    <item
+        android:icon="@drawable/icon_person_24"
+        android:title="Profile" />
+</menu>
