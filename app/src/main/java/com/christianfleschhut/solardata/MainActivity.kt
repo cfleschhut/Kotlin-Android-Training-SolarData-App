@@ -16,16 +16,14 @@ class MainActivity : AppCompatActivity() {
 
         val entries = arrayListOf<Entry>()
 
-        val exampleData = listOf<Map<String, Float>>(
-            mapOf("x" to 0.0f, "y" to 0.0f),
-            mapOf("x" to 1.0f, "y" to 2.0f),
-            mapOf("x" to 2.0f, "y" to 1.0f),
-            mapOf("x" to 3.0f, "y" to 3.0f),
-            mapOf("x" to 4.0f, "y" to 0.0f),
-        )
-
-        exampleData.forEach {
-            entries.add(Entry(it["x"]!!, it["y"]!!))
+        val exampleData = listOf(
+            Pair(0.0f, 0.0f),
+            Pair(1.0f, 2.0f),
+            Pair(2.0f, 1.0f),
+            Pair(3.0f, 3.0f),
+            Pair(4.0f, 0.0f),
+        ).forEach { (x, y) ->
+            entries.add(Entry(x, y))
         }
 
         val dataSet = LineDataSet(entries, "Label")
