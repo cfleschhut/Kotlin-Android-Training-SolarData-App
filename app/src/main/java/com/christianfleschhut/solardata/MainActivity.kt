@@ -6,6 +6,7 @@ import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun generateExampleData(hours: Int = 24): List<Measurement> {
         return (0 until hours).mapTo(mutableListOf()) {
-            Measurement(it.toFloat(), it.toFloat() * 2)
+            Measurement(it.toFloat(), Random.nextFloat())
         }
     }
 }
