@@ -16,14 +16,9 @@ class MainActivity : AppCompatActivity() {
 
         val entries = arrayListOf<Entry>()
 
-        val exampleData = listOf(
-            Pair(0.0f, 0.0f),
-            Pair(1.0f, 2.0f),
-            Pair(2.0f, 1.0f),
-            Pair(3.0f, 3.0f),
-            Pair(4.0f, 0.0f),
-        ).forEach { (x, y) ->
-            entries.add(Entry(x, y))
+        val exampleData: List<Measurement> = generateExampleData()
+        exampleData.forEach { (timestamp, value) ->
+            entries.add(Entry(timestamp, value))
         }
 
         val dataSet = LineDataSet(entries, "Label")
@@ -32,4 +27,15 @@ class MainActivity : AppCompatActivity() {
         chart.data = lineData
         chart.invalidate()
     }
+
+    private fun generateExampleData(hours: Int = 24): List<Measurement> {
+        return (0 until hours).mapTo(mutableListOf()) {
+            Measurement(it.toFloat(), it.toFloat() * 2)
+        }
+    }
 }
+
+data class Measurement(
+    val timestamp: Float = 0f,
+    val value: Float = 0f
+)
