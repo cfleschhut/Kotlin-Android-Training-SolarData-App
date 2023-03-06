@@ -2,41 +2,41 @@ package com.christianfleschhut.solardata
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
-import kotlin.random.Random
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
+import com.christianfleschhut.solardata.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        val chart = findViewById<LineChart>(R.id.chart)
+        if (savedInstanceState != null) return
 
-        val entries = arrayListOf<Entry>()
-
-        val exampleData: List<Measurement> = generateExampleData()
-        exampleData.forEach { (timestamp, value) ->
-            entries.add(Entry(timestamp, value))
+        supportFragmentManager.commit {
+//            setReorderingAllowed(true)
+            add<HomeFragment>(R.id.fragmentContainer)
         }
 
-        val dataSet = LineDataSet(entries, "Label")
-        val lineData = LineData(dataSet)
-
-        chart.data = lineData
-        chart.invalidate()
+        binding.bottomNavigation.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.action_home -> setFragment(HomeFragment())
+                R.id.action_history -> setFragment(HistoryFragment())
+                R.id.action_settings -> setFragment(SettingsFragment())
+                else -> false
+            }
+        }
     }
 
-    private fun generateExampleData(hours: Int = 24): List<Measurement> {
-        return (0 until hours).mapTo(mutableListOf()) {
-            Measurement(it.toFloat(), Random.nextFloat())
+    private fun setFragment(fragment: Fragment): Boolean {
+        supportFragmentManager.beginTransaction().apply {
+            replace(binding.fragmentContainer.id, fragment).commit()
         }
+        return true
     }
 }
-
-data class Measurement(
-    val timestamp: Float = 0f,
-    val value: Float = 0f
-)
