@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import androidx.lifecycle.ViewModelProvider
 import com.christianfleschhut.solardata.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -31,6 +32,8 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+
+        val viewModel = ViewModelProvider(this)[MainViewModel::class.java]
     }
 
     private fun setFragment(fragment: Fragment): Boolean {
