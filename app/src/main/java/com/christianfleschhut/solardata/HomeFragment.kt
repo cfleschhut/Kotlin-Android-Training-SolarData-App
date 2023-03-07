@@ -29,9 +29,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         viewModel?.devices?.observe(viewLifecycleOwner) { devices ->
-            devices.forEach {
-                println(it)
-            }
+//            devices.forEach { println(it) }
+            binding.rvDeviceList.adapter = DeviceAdapter(devices)
         }
     }
 
