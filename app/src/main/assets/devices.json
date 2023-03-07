@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Anker Solix RS40",
+    "output": "830W",
+    "img_filename": "anker_solix_rs40.png",
+    "description": "Description Anker Solix RS40 Lorem Ipsum dolor sit amet"
+  },
+  {
+    "name": "Anker Solix RS40P",
+    "output": "880W",
+    "img_filename": "anker_solix_rs40p.png",
+    "description": "Description Anker Solix RS40P Lorem Ipsum dolor sit amet"
+  },
+  {
+    "name": "Ulica Solar 435",
+    "output": "870W",
+    "img_filename": "ulica_solar_435.png",
+    "description": "Description Ulica Solar 435 Lorem Ipsum dolor sit amet"
+  },
+  {
+    "name": "Ulica Solar 445",
+    "output": "890W",
+    "img_filename": "ulica_solar_445.png",
+    "description": "Description Ulica Solar 445 Lorem Ipsum dolor sit amet"
+  },
+  {
+    "name": "First Solar Series 6",
+    "output": "920W",
+    "img_filename": "first_solar_series6.png",
+    "description": "Description First Solar Series 6 Lorem Ipsum dolor sit amet"
+  },
+  {
+    "name": "First Solar Series 6 Plus",
+    "output": "960W",
+    "img_filename": "first_solar_series6_plus.png",
+    "description": "Description First Solar Series 6 Plus Lorem Ipsum dolor sit amet"
+  }
+]

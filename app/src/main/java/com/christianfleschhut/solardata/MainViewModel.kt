@@ -9,8 +9,10 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
     private val deviceRepository: DeviceRepository = DeviceRepository()
 
     init {
-        val data = deviceRepository.getTextFromResource(app, R.raw.devices)
-        println(data)
+        val data = deviceRepository.getDevices(app, "devices.json")
+        data?.forEach {
+            println(it.name)
+        }
     }
 
 }
