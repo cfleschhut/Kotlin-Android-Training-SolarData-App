@@ -7,7 +7,7 @@ import coil.load
 import com.christianfleschhut.solardata.data.Device
 import com.christianfleschhut.solardata.databinding.DeviceItemBinding
 
-class DeviceAdapter(private val items: List<Device>) :
+class DeviceAdapter(private val items: List<Device>, private val onItemClick: (target: Device) -> Unit) :
     RecyclerView.Adapter<DeviceAdapter.ViewHolder>() {
 
     inner class ViewHolder(val viewItem: DeviceItemBinding) : RecyclerView.ViewHolder(viewItem.root)
@@ -33,6 +33,10 @@ class DeviceAdapter(private val items: List<Device>) :
                 crossfade(400)
             }
             tvDeviceName.text = device.name
+        }
+
+        holder.itemView.setOnClickListener {
+            onItemClick(device)
         }
     }
 }

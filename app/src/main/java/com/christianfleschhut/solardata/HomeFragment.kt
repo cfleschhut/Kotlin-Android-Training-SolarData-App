@@ -6,12 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.christianfleschhut.solardata.data.Device
 import com.christianfleschhut.solardata.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+    private val onItemClick: (target: Device) -> Unit = { device ->
+        println(device)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -29,8 +34,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         }
 
         viewModel?.devices?.observe(viewLifecycleOwner) { devices ->
-//            devices.forEach { println(it) }
-            binding.rvDeviceList.adapter = DeviceAdapter(devices)
+            binding.rvDeviceList.adapter = DeviceAdapter(devices, onItemClick)
         }
     }
 
