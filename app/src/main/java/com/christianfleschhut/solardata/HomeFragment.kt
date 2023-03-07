@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.christianfleschhut.solardata.data.Device
+import androidx.lifecycle.ViewModelProvider
 import com.christianfleschhut.solardata.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -24,8 +24,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val device = Device("Device", "800W", "device.png", "Desc")
-//        println(device)
+        val viewModel = activity?.run {
+            ViewModelProvider(this)[MainViewModel::class.java]
+        }
+
+        viewModel?.devices?.observe(viewLifecycleOwner) { devices ->
+            devices.forEach {
+                println(it)
+            }
+        }
     }
 
     override fun onDestroyView() {

@@ -9,11 +9,11 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 class DeviceRepository {
 
-    fun getTextFromResource(context: Context, resourceId: Int): String {
-        return context.resources.openRawResource(resourceId)
-            .bufferedReader()
-            .use { it.readText() }
-    }
+//    fun getTextFromResource(context: Context, resourceId: Int): String {
+//        return context.resources.openRawResource(resourceId)
+//            .bufferedReader()
+//            .use { it.readText() }
+//    }
 
     fun getTextFromAsset(context: Context, fileName: String): String {
         return context.resources.assets.open(fileName)
