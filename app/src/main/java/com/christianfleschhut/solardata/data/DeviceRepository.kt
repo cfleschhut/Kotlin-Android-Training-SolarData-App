@@ -1,33 +1,34 @@
 package com.christianfleschhut.solardata.data
 
-import android.content.Context
-import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
-import com.squareup.moshi.Types
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 
+const val BASE_ENDPOINT_URL = "http://192.168.1.4:3000/"
 
 class DeviceRepository {
 
-//    fun getTextFromResource(context: Context, resourceId: Int): String {
-//        return context.resources.openRawResource(resourceId)
-//            .bufferedReader()
-//            .use { it.readText() }
-//    }
+    private val retrofit: Retrofit by lazy {
+        val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 
-    fun getTextFromAsset(context: Context, fileName: String): String {
-        return context.resources.assets.open(fileName)
-            .bufferedReader()
-            .use { it.readText() }
+        Retrofit.Builder()
+            .baseUrl(BASE_ENDPOINT_URL)
+            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .build()
     }
 
-    fun getDevices(context: Context, fileName: String): List<Device>? {
-        val moshi = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
-        val listType = Types.newParameterizedType(
-            List::class.java, Device::class.java
-        )
-        val adapter: JsonAdapter<List<Device>> = moshi.adapter(listType)
-        return adapter.fromJson(getTextFromAsset(context, fileName))
+    private val deviceApi: DeviceApi by lazy {
+        retrofit.create(DeviceApi::class.java)
+    }
+
+    suspend fun getDevices(): List<Device> {
+        val response = deviceApi.getDevices()
+
+        return if (response.isSuccessful)
+            response.body() ?: emptyList()
+        else
+            emptyList()
     }
 
 }
