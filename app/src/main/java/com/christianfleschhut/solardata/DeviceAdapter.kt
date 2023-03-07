@@ -3,6 +3,7 @@ package com.christianfleschhut.solardata
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.christianfleschhut.solardata.data.Device
 import com.christianfleschhut.solardata.databinding.DeviceItemBinding
 
@@ -28,6 +29,9 @@ class DeviceAdapter(private val items: List<Device>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val device = items[position]
         with(holder.viewItem) {
+            ivDeviceImage.load(device.image) {
+                crossfade(400)
+            }
             tvDeviceName.text = device.name
         }
     }
