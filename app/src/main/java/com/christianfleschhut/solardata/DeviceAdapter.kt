@@ -7,7 +7,10 @@ import coil.load
 import com.christianfleschhut.solardata.data.Device
 import com.christianfleschhut.solardata.databinding.DeviceItemBinding
 
-class DeviceAdapter(private val items: List<Device>, private val onItemClick: (target: Device) -> Unit) :
+class DeviceAdapter(
+    private val items: List<Device>,
+    private val onItemClick: (target: Device) -> Unit
+) :
     RecyclerView.Adapter<DeviceAdapter.ViewHolder>() {
 
     inner class ViewHolder(val viewItem: DeviceItemBinding) : RecyclerView.ViewHolder(viewItem.root)
@@ -28,9 +31,11 @@ class DeviceAdapter(private val items: List<Device>, private val onItemClick: (t
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val device = items[position]
+
         with(holder.viewItem) {
             ivDeviceImage.load(device.image) {
                 crossfade(400)
+//                placeholder(R.drawable.img_device)
             }
             tvDeviceName.text = device.name
         }

@@ -23,6 +23,7 @@ class DeviceRepository {
     }
 
     suspend fun getDevices(): List<Device> {
+//        delay(2000)
         val response = deviceApi.getDevices()
 
         return if (response.isSuccessful)

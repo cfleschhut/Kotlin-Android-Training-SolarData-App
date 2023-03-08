@@ -33,6 +33,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             ViewModelProvider(this)[MainViewModel::class.java]
         }
 
+        viewModel?.isLoading?.observe(viewLifecycleOwner) { isLoading ->
+            binding.pbDeviceList.visibility = if (isLoading) View.VISIBLE else View.GONE
+        }
+
         viewModel?.devices?.observe(viewLifecycleOwner) { devices ->
             binding.rvDeviceList.adapter = DeviceAdapter(devices, onItemClick)
         }
