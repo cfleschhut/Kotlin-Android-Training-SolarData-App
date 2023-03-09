@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.christianfleschhut.solardata.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
@@ -14,7 +14,7 @@ class SettingsFragment : Fragment() {
     private var _binding: FragmentSettingsBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MainViewModel by viewModels()
+    private var viewModel: MainViewModel? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,12 +27,20 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.tvUserInfo.text = getString(R.string.settings_username, viewModel.userInfo.value)
-        binding.tvDeviceInfo.text =
-            getString(R.string.settings_device, viewModel.selectedDevice.value)
+        viewModel = activity?.run {
+            ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        }
+
+        viewModel?.userInfo?.observe(viewLifecycleOwner) {
+            binding.tvUserInfo.text = getString(R.string.settings_username, it)
+        }
+
+        viewModel?.selectedDevice?.observe(viewLifecycleOwner) {
+            binding.tvDeviceInfo.text = getString(R.string.settings_device, it?.name, it?.output)
+        }
 
         binding.btnLogout.setOnClickListener {
-            viewModel.resetUserInfo()
+            viewModel?.resetUserInfo()
 
             activity?.run {
                 startActivity(

@@ -45,8 +45,10 @@ class MainViewModel(val app: Application) : AndroidViewModel(app) {
         }
     }
 
-    val selectedDevice: MutableLiveData<String?> = MutableLiveData(
-        getStoredPreference(PREF_KEY_DEVICE)
+    val selectedDevice: MutableLiveData<Device> = MutableLiveData(
+        Device(
+            name = getStoredPreference(PREF_KEY_DEVICE) ?: "", id = null
+        )
     )
 
     val userInfo: MutableLiveData<String?> = MutableLiveData(
@@ -71,7 +73,7 @@ class MainViewModel(val app: Application) : AndroidViewModel(app) {
     }
 
     fun storeSelectedDevice(device: Device) {
-        selectedDevice.value = device.name
+        selectedDevice.value = device
         storePreference(PREF_KEY_DEVICE, device.name)
     }
 

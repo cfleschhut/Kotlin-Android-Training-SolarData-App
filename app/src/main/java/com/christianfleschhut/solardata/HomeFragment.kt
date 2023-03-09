@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.christianfleschhut.solardata.data.Device
 import com.christianfleschhut.solardata.databinding.FragmentHomeBinding
 
@@ -18,16 +19,15 @@ class HomeFragment : Fragment() {
     private var viewModel: MainViewModel? = null
 
     private val onItemClick: (target: Device) -> Unit = { device ->
-        println("onItemClick: $device")
         viewModel?.storeSelectedDevice(device)
+        findNavController().navigate(R.id.action_homeFragment_to_detailFragment)
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
