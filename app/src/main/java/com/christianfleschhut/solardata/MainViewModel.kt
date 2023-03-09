@@ -2,15 +2,14 @@ package com.christianfleschhut.solardata
 
 import android.app.Application
 import android.preference.PreferenceManager
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.liveData
+import android.util.Log
+import androidx.lifecycle.*
 import com.christianfleschhut.solardata.data.Device
 import com.christianfleschhut.solardata.data.DeviceRepository
 import kotlinx.coroutines.delay
 
-const val PREF_KEY_USER = "user_email"
+private const val PREF_KEY_USER = "user_email"
+private const val TAG = "MainViewModel"
 
 class MainViewModel(val app: Application) : AndroidViewModel(app) {
 
@@ -20,14 +19,29 @@ class MainViewModel(val app: Application) : AndroidViewModel(app) {
     val isLoading: LiveData<Boolean>
         get() = _isLoading
 
+    private val _errorMessage = MutableLiveData<String?>(null)
+    val errorMessage: LiveData<String?>
+        get() = _errorMessage
+
     val devices: LiveData<List<Device>> = liveData {
+        _errorMessage.value = null
         _isLoading.value = true
 
-        delay(4000)
-        val data = deviceRepository.getDevices()
-        emit(data)
+        try {
+            delay(4000)
 
-        _isLoading.value = false
+            val fetchedDevices = deviceRepository.getDevices()
+            Log.i(TAG, "Fetched devices: $fetchedDevices")
+
+            emit(fetchedDevices)
+
+        } catch (e: Exception) {
+            _errorMessage.value = e.message
+            Log.e(TAG, "Exception: $e")
+
+        } finally {
+            _isLoading.value = false
+        }
     }
 
     val userInfo: MutableLiveData<String?> = MutableLiveData(
@@ -57,6 +71,7 @@ class MainViewModel(val app: Application) : AndroidViewModel(app) {
             .remove(key)
             .apply()
     }
+
     fun resetUserInfo() {
         userInfo.value = null
         resetPreference(PREF_KEY_USER)
