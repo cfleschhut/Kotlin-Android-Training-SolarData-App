@@ -9,6 +9,7 @@ import com.christianfleschhut.solardata.data.DeviceRepository
 import kotlinx.coroutines.delay
 
 private const val PREF_KEY_USER = "user_email"
+private const val PREF_KEY_DEVICE = "selected_device"
 private const val TAG = "MainViewModel"
 
 class MainViewModel(val app: Application) : AndroidViewModel(app) {
@@ -28,7 +29,7 @@ class MainViewModel(val app: Application) : AndroidViewModel(app) {
         _isLoading.value = true
 
         try {
-            delay(4000)
+            delay(400)
 
             val fetchedDevices = deviceRepository.getDevices()
             Log.i(TAG, "Fetched devices: $fetchedDevices")
@@ -43,6 +44,10 @@ class MainViewModel(val app: Application) : AndroidViewModel(app) {
             _isLoading.value = false
         }
     }
+
+    val selectedDevice: MutableLiveData<String?> = MutableLiveData(
+        getStoredPreference(PREF_KEY_DEVICE)
+    )
 
     val userInfo: MutableLiveData<String?> = MutableLiveData(
         getStoredPreference(PREF_KEY_USER)
@@ -63,6 +68,11 @@ class MainViewModel(val app: Application) : AndroidViewModel(app) {
     fun storeUserInfo(value: String) {
         userInfo.value = value
         storePreference(PREF_KEY_USER, value)
+    }
+
+    fun storeSelectedDevice(device: Device) {
+        selectedDevice.value = device.name
+        storePreference(PREF_KEY_DEVICE, device.name)
     }
 
     private fun resetPreference(key: String) {

@@ -28,6 +28,8 @@ class SettingsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.tvUserInfo.text = getString(R.string.settings_username, viewModel.userInfo.value)
+        binding.tvDeviceInfo.text =
+            getString(R.string.settings_device, viewModel.selectedDevice.value)
 
         binding.btnLogout.setOnClickListener {
             viewModel.resetUserInfo()

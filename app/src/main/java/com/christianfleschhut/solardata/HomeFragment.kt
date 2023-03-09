@@ -15,8 +15,11 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
+    private var viewModel: MainViewModel? = null
+
     private val onItemClick: (target: Device) -> Unit = { device ->
-        println(device)
+        println("onItemClick: $device")
+        viewModel?.storeSelectedDevice(device)
     }
 
     override fun onCreateView(
@@ -30,7 +33,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val viewModel = activity?.run {
+        viewModel = activity?.run {
             ViewModelProvider(this)[MainViewModel::class.java]
         }
 

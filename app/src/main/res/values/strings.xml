@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">SolarData</string>
-    <string name="settings_username">Angemeldet als: %s</string>
+    <string name="settings_username">Angemeldet als:\n%s</string>
+    <string name="settings_device">Installierte Anlage:\n%s</string>
 </resources>
