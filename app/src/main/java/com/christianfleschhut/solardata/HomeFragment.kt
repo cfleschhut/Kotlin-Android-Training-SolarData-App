@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.christianfleschhut.solardata.data.Device
 import com.christianfleschhut.solardata.databinding.FragmentHomeBinding
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
