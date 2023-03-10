@@ -36,7 +36,9 @@ class SettingsFragment : Fragment() {
         }
 
         viewModel?.selectedDevice?.observe(viewLifecycleOwner) {
-            binding.tvDeviceInfo.text = getString(R.string.settings_device, it?.name, it?.output)
+            binding.tvDeviceInfo.text = getString(R.string.settings_device, it?.name)
+            binding.tvDeviceInfoPowerOutput.text = getString(
+                R.string.settings_device_output, it.output ?: "")
         }
 
         binding.btnLogout.setOnClickListener {

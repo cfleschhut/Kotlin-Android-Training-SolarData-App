@@ -37,6 +37,13 @@
             android:text="@string/settings_device"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
+        <TextView
+            android:id="@+id/tvDeviceInfoPowerOutput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_device_output"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
     </LinearLayout>
 
     <Button

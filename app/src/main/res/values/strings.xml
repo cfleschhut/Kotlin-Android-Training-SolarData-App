@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">SolarData</string>
     <string name="settings_username">Angemeldet als:\n%s</string>
-    <string name="settings_device">Installierte Anlage:\n%s — %s</string>
+    <string name="settings_device">Installierte Anlage:\n%s</string>
+    <string name="settings_device_output">%s</string>
     <string name="detail_power_output">Power output: %s</string>
     <string name="error_msg_api_request">Error fetching remote data</string>
 </resources>
