@@ -1,39 +1,35 @@
 package com.christianfleschhut.solardata
 
-import android.view.View
+import com.christianfleschhut.solardata.data.Measurement
+import com.github.mikephil.charting.charts.BarChart
 import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.data.*
 import kotlin.random.Random
 
-class Chart(private val container: View) {
+class Chart(chartView: BarChart, data: List<Measurement>?) {
 
-    fun display() {
-        val chart = container.findViewById<LineChart>(R.id.chart)
+    init {
+        val entries = arrayListOf<BarEntry>()
 
-        val entries = arrayListOf<Entry>()
-
-        val exampleData = generateExampleData(12)
-        exampleData.forEach { (time, value) ->
-            entries.add(Entry(time, value))
+        data?.forEach {
+            entries.add(BarEntry(it.timestamp, it.value))
         }
 
-        val dataSet = LineDataSet(entries, "Label")
-        val lineData = LineData(dataSet)
+//        val exampleData = generateExampleData()
+//        exampleData.forEach { (time, value) ->
+//            entries.add(Entry(time, value))
+//        }
 
-        chart.data = lineData
-        chart.invalidate()
+        val dataSet = BarDataSet(entries, "kW")
+        val chartData = BarData(dataSet)
+
+        chartView.data = chartData
+        chartView.invalidate()
     }
 
-    private fun generateExampleData(hours: Int = 24): List<Measurement> {
-        return (0 until hours).mapTo(mutableListOf()) {
-            Measurement(it.toFloat(), Random.nextFloat())
-        }
-    }
+//    private fun generateExampleData(hours: Int = 24): List<Measurement> {
+//        return (0 until hours).mapTo(mutableListOf()) {
+//            Measurement(it.toFloat(), Random.nextFloat() * 20)
+//        }
+//    }
 }
-
-data class Measurement(
-    val timestamp: Float = 0f,
-    val value: Float = 0f
-)
