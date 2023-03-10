@@ -33,7 +33,11 @@ class LoginActivity : AppCompatActivity() {
                 startActivity(intent)
             } else {
                 Toast
-                    .makeText(this, "Please enter login data", Toast.LENGTH_SHORT)
+                    .makeText(
+                        this,
+                        getString(R.string.login_form_error_msg_missing_credentials),
+                        Toast.LENGTH_SHORT
+                    )
                     .show()
             }
         }

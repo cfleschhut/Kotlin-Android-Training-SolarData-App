@@ -19,12 +19,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:text="Energie produziert"
+            android:text="@string/component_summary_headline"
             android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:baselineAligned="false"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -37,7 +38,7 @@
                     android:id="@+id/tvLabel1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="This Month"
+                    android:text="@string/component_summary_label_month"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
@@ -45,7 +46,7 @@
                     android:id="@+id/textView1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="500 kWh"
+                    android:text="@string/component_summary_value_month"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -61,7 +62,7 @@
                     android:id="@+id/tvLabel2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="This Year"
+                    android:text="@string/component_summary_label_year"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
@@ -69,7 +70,7 @@
                     android:id="@+id/textView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="3.12 MWh"
+                    android:text="@string/component_summary_value_year"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
@@ -85,7 +86,7 @@
                     android:id="@+id/tvLabel3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Lifetime"
+                    android:text="@string/component_summary_label_lifetime"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Small" />
 
@@ -93,7 +94,7 @@
                     android:id="@+id/textView3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="32.9 MWh"
+                    android:text="@string/component_summary_value_lifetime"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 

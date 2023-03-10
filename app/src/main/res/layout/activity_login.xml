@@ -23,56 +23,55 @@
             android:layout_height="160dp"
             android:layout_gravity="center"
             android:layout_marginBottom="16dp"
+            android:contentDescription="@string/login_logo_alt_text"
             app:srcCompat="@drawable/icon_solar_power_24"
-            android:contentDescription="Logo"
             app:tint="@color/black" />
 
         <TextView
             android:id="@+id/tvHeadline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
+            android:text="@string/login_headline"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24sp"
-            android:text="Willkommen bei SolarData"
+            android:text="@string/login_headline_greeting"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etLayoutEmail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_marginBottom="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Email"
+                android:hint="@string/login_form_input_hint_email"
                 android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/etLayoutPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Password"
+                android:hint="@string/login_form_input_hint_password"
                 android:inputType="textPassword" />
 
         </com.google.android.material.textfield.TextInputLayout>
-
 
     </LinearLayout>
 
@@ -80,7 +79,7 @@
         android:id="@+id/btnLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="@string/btn_cta_login"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -19,13 +19,13 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ihre Balkon-Solaranlage"
+            android:text="@string/device_selection_headline"
             android:textAppearance="@style/TextAppearance.AppCompat.Headline" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Choose from list of available devices to connect to"
+            android:text="@string/device_selection_headline_instruction"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
     </LinearLayout>
 
@@ -74,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Retry" />-->
+            android:text="@string/error_api_request_btn_retry" />-->
 
     </LinearLayout>
 

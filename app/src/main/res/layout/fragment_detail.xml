@@ -10,7 +10,7 @@
         android:id="@+id/ivDeviceImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:contentDescription="Device image"
+        android:contentDescription="@string/device_detail_image_alt_text"
         android:scaleType="centerCrop"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
         android:id="@+id/btnSelectDevice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select device"
+        android:text="@string/device_detail_btn_cta_select"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

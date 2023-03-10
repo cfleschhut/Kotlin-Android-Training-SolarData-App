@@ -3,15 +3,15 @@
     <item
         android:id="@+id/action_home"
         android:icon="@drawable/icon_solar_power_24"
-        android:title="Today" />
+        android:title="@string/menu_item_label_home" />
 
     <item
         android:id="@+id/action_history"
         android:icon="@drawable/icon_bar_chart_24"
-        android:title="History" />
+        android:title="@string/menu_item_label_history" />
 
     <item
         android:id="@+id/action_settings"
         android:icon="@drawable/icon_person_24"
-        android:title="Profile" />
+        android:title="@string/menu_item_label_profile" />
 </menu>
