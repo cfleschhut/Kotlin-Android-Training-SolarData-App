@@ -6,7 +6,6 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.christianfleschhut.solardata.data.Device
 import com.christianfleschhut.solardata.data.DeviceRepository
-import kotlinx.coroutines.delay
 
 private const val PREF_KEY_USER = "user_email"
 private const val PREF_KEY_DEVICE = "selected_device"
@@ -14,7 +13,7 @@ private const val TAG = "MainViewModel"
 
 class MainViewModel(val app: Application) : AndroidViewModel(app) {
 
-    private val deviceRepository: DeviceRepository = DeviceRepository()
+    private val deviceRepository: DeviceRepository = DeviceRepository(app)
 
     private val _isLoading = MutableLiveData(false)
     val isLoading: LiveData<Boolean>
@@ -29,7 +28,7 @@ class MainViewModel(val app: Application) : AndroidViewModel(app) {
         _isLoading.value = true
 
         try {
-            delay(400)
+//            delay(400)
 
             val fetchedDevices = deviceRepository.getDevices()
             Log.i(TAG, "Fetched devices: $fetchedDevices")
