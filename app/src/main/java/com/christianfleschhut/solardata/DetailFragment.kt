@@ -38,6 +38,7 @@ class DetailFragment : Fragment() {
                 }
                 binding.tvDeviceName.text = name
                 binding.tvDeviceOutput.text = getString(R.string.detail_power_output, output)
+                binding.tvDeviceDescription.text = description
             }
         }
     }

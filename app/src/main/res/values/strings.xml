@@ -13,7 +13,7 @@
     <string name="login_form_input_hint_password">Password</string>
     <string name="login_form_error_msg_missing_credentials">Please enter your login data</string>
     <string name="btn_cta_login">Login</string>
-    <string name="component_summary_headline">Energie produziert</string>
+    <string name="component_summary_headline">Produzierte Energie</string>
     <string name="component_summary_label_month">This Month</string>
     <string name="component_summary_label_year">This Year</string>
     <string name="component_summary_label_lifetime">Lifetime</string>
@@ -30,4 +30,5 @@
     <string name="menu_item_label_home">Today</string>
     <string name="menu_item_label_history">History</string>
     <string name="menu_item_label_profile">Profile</string>
+    <string name="headline_chart_production">Produktion</string>
 </resources>
